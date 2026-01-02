@@ -1,0 +1,111 @@
+---
+// Final CTA section
+---
+
+<section class="final-cta" id="kontakt">
+  <div class="final-cta__bg"></div>
+  <div class="container">
+    <div class="final-cta__content">
+      <h2 class="final-cta__title">Podejmij świadomą decyzję</h2>
+      <p class="final-cta__text">
+        Zamiast zbierać sprzeczne opinie — zamów niezależną analizę opartą na danych. 
+        Dowiesz się, które rozwiązanie rzeczywiście pasuje do Twojego domu i budżetu.
+      </p>
+      <a href="mailto:kontakt@argentech.pl" class="btn btn--primary btn--large">
+        Zamów niezależną analizę
+      </a>
+      <p class="final-cta__note">
+        Napisz krótko o swoim budynku — odezwę się w ciągu 2 dni roboczych.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__content">
+      <p class="footer__brand">Argentech</p>
+      <p class="footer__copy">© 2026 Argentech. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .final-cta {
+    position: relative;
+    padding: var(--space-4xl) var(--space-md);
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .final-cta__bg {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-light-grey);
+    /* Subtle pattern */
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(74, 124, 89, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(74, 124, 89, 0.03) 0%, transparent 50%);
+  }
+
+  .final-cta__content {
+    position: relative;
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .final-cta__title {
+    margin-bottom: var(--space-md);
+  }
+
+  .final-cta__text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+  }
+
+  .final-cta__note {
+    margin-top: var(--space-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+  }
+
+  .footer {
+    padding: var(--space-lg) var(--space-md);
+    background-color: var(--color-dark-grey);
+  }
+
+  .footer__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    text-align: center;
+  }
+
+  .footer__brand {
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  .footer__copy {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: var(--font-size-xs);
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .final-cta {
+      padding: 7rem var(--space-lg);
+    }
+
+    .footer__content {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+</style>

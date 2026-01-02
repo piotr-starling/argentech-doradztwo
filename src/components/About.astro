@@ -1,0 +1,142 @@
+---
+// About section with professional image
+---
+
+<section class="section section--grey" id="o-mnie">
+  <div class="container">
+    <div class="about__layout">
+      <div class="about__image">
+        <div class="img-wrapper">
+          <img 
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" 
+            alt="Profesjonalista w pracy"
+            loading="lazy"
+            width="600"
+            height="700"
+          />
+        </div>
+      </div>
+
+      <div class="about__content">
+        <h2 class="about__title">O Argentech</h2>
+        
+        <div class="about__text">
+          <p>
+            Argentech to jednoosobowa działalność doradcza. Nazywam się 
+            <strong>[Imię Nazwisko]</strong> i od ponad 30 lat pracuję 
+            w branży instalacyjnej jako inżynier.
+          </p>
+          
+          <p>
+            Przez lata współpracowałem z biurami projektowymi, wykonawcami 
+            i inwestorami przy projektach od domów jednorodzinnych po obiekty 
+            przemysłowe. Znam realia rynku — zarówno od strony technicznej, 
+            jak i handlowej.
+          </p>
+          
+          <p>
+            Do obliczeń wykorzystuję profesjonalne narzędzia inżynierskie, 
+            te same które stosują biura projektowe. Analizy ekonomiczne opieram 
+            na aktualnych cenach urządzeń i energii.
+          </p>
+        </div>
+        
+        <div class="about__highlight">
+          <p>
+            <strong>Nie sprzedaję urządzeń. Nie wykonuję instalacji.</strong><br>
+            Mój model to wyłącznie doradztwo — płacisz za wiedzę i czas.
+          </p>
+        </div>
+
+        <div class="about__stats">
+          <div class="about__stat">
+            <span class="about__stat-number">30+</span>
+            <span class="about__stat-label">lat doświadczenia</span>
+          </div>
+          <div class="about__stat">
+            <span class="about__stat-number">100%</span>
+            <span class="about__stat-label">niezależności</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about__layout {
+    display: grid;
+    gap: var(--space-2xl);
+  }
+
+  .about__image {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .about__image .img-wrapper {
+    aspect-ratio: 4 / 5;
+  }
+
+  .about__title {
+    margin-bottom: var(--space-lg);
+  }
+
+  .about__text {
+    margin-bottom: var(--space-lg);
+  }
+
+  .about__text p {
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+  }
+
+  .about__highlight {
+    padding: var(--space-md);
+    background-color: var(--color-white);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin-bottom: var(--space-xl);
+  }
+
+  .about__highlight p {
+    color: var(--color-text);
+    margin: 0;
+    font-size: var(--font-size-sm);
+  }
+
+  .about__stats {
+    display: flex;
+    gap: var(--space-xl);
+  }
+
+  .about__stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about__stat-number {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .about__stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-xs);
+  }
+
+  @media (min-width: 900px) {
+    .about__layout {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+
+    .about__image {
+      max-width: none;
+    }
+  }
+</style>

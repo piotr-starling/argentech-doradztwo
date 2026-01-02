@@ -1,0 +1,127 @@
+---
+// FAQ section
+
+const faqs = [
+  {
+    question: "Jakie dane są potrzebne do analizy?",
+    answer: "Podstawowe informacje o budynku: powierzchnia, rok budowy, rodzaj izolacji, stolarka okienna, obecne źródło ciepła. Jeśli masz projekt budowlany lub audyt energetyczny — świetnie, wykorzystam te dane. Jeśli nie — pomogę zebrać niezbędne informacje na podstawie rozmowy i ewentualnej dokumentacji zdjęciowej."
+  },
+  {
+    question: "Czy analiza zastępuje projekt instalacji?",
+    answer: "Nie. Analiza służy do wyboru optymalnego źródła ciepła i oszacowania kosztów. To etap poprzedzający projekt. Po podjęciu decyzji nadal będziesz potrzebować projektu wykonawczego — mogę polecić sprawdzone biura projektowe."
+  },
+  {
+    question: "Czy uwzględniacie dotacje i dofinansowania?",
+    answer: "Tak, w analizie ekonomicznej uwzględniam aktualne programy dofinansowań (np. Czyste Powietrze). Informuję też o warunkach i ograniczeniach poszczególnych programów. Pamiętaj jednak, że zasady dotacji zmieniają się — ostateczne warunki zawsze sprawdzaj w momencie składania wniosku."
+  },
+  {
+    question: "Czy polecacie konkretne urządzenia i producentów?",
+    answer: "W rekomendacji wskazuję parametry techniczne, jakie powinno spełniać urządzenie, oraz przykłady modeli z różnych półek cenowych. Nie jestem związany z żadnym producentem — wybór konkretnego modelu i dostawcy pozostaje po Twojej stronie."
+  },
+  {
+    question: "Skąd pewność, że analiza jest obiektywna?",
+    answer: "Nie sprzedaję urządzeń, nie wykonuję instalacji, nie mam umów z producentami. Mój przychód to wyłącznie opłata za analizę. Nie mam żadnego interesu finansowego w tym, żebyś wybrał pompę ciepła zamiast kotła gazowego — lub odwrotnie. Zależy mi na tym, żebyś podjął świadomą decyzję."
+  }
+];
+---
+
+<section class="section section--white" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Często zadawane pytania</h2>
+    </div>
+    
+    <div class="faq__list">
+      {faqs.map((faq) => (
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span class="faq__question-text">{faq.question}</span>
+            <span class="faq__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </summary>
+          <p class="faq__answer">{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq__list {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background-color: var(--color-mid-grey);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .faq__item {
+    background-color: var(--color-white);
+  }
+
+  .faq__item:first-child {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .faq__item:last-child {
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  }
+
+  .faq__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--color-dark-grey);
+    list-style: none;
+    transition: background-color var(--transition-fast);
+  }
+
+  .faq__question:hover {
+    background-color: var(--color-lighter-grey);
+  }
+
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__question::marker {
+    display: none;
+  }
+
+  .faq__question-text {
+    font-size: var(--font-size-base);
+  }
+
+  .faq__icon {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+    transition: transform var(--transition-base);
+  }
+
+  .faq__item[open] .faq__icon {
+    transform: rotate(180deg);
+  }
+
+  .faq__answer {
+    padding: 0 var(--space-lg) var(--space-lg);
+    color: var(--color-text-muted);
+    margin: 0;
+    font-size: var(--font-size-sm);
+    line-height: 1.7;
+  }
+
+  .faq__question:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+</style>

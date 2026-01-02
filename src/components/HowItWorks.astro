@@ -1,0 +1,166 @@
+---
+// HowItWorks section - 3 step process
+---
+
+<section class="section section--grey" id="jak-to-dziala">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Jak to działa?</h2>
+      <p class="section-subtitle">
+        Prosty proces w trzech krokach — od zgłoszenia do gotowej analizy.
+      </p>
+    </div>
+    
+    <div class="steps">
+      <article class="step">
+        <div class="step__header">
+          <span class="step__number">1</span>
+          <div class="step__line" aria-hidden="true"></div>
+        </div>
+        <div class="step__content">
+          <h3 class="step__title">Krótki formularz</h3>
+          <p class="step__description">
+            Wypełniasz formularz zgłoszeniowy — podstawowe informacje o budynku, 
+            obecnym ogrzewaniu i Twoich oczekiwaniach. Zajmuje to około 5 minut.
+          </p>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step__header">
+          <span class="step__number">2</span>
+          <div class="step__line" aria-hidden="true"></div>
+        </div>
+        <div class="step__content">
+          <h3 class="step__title">Zebranie danych</h3>
+          <p class="step__description">
+            Kontaktuję się, aby doprecyzować szczegóły. Potrzebuję dokumentacji 
+            budynku lub podstawowych wymiarów i informacji o izolacji. 
+            Po ustaleniu zakresu — wycena i rozpoczęcie pracy.
+          </p>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step__header">
+          <span class="step__number">3</span>
+        </div>
+        <div class="step__content">
+          <h3 class="step__title">Analiza i omówienie</h3>
+          <p class="step__description">
+            Otrzymujesz szczegółowy raport w formacie PDF. Następnie umawiamy 
+            rozmowę — przechodzę przez wyniki, wyjaśniam rekomendację 
+            i odpowiadam na pytania.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .step {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .step__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .step__number {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .step__line {
+    width: 2px;
+    flex: 1;
+    min-height: 40px;
+    background-color: var(--color-mid-grey);
+    margin: var(--space-sm) 0;
+  }
+
+  .step__content {
+    padding-bottom: var(--space-xl);
+  }
+
+  .step:last-child .step__content {
+    padding-bottom: 0;
+  }
+
+  .step__title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-xs);
+  }
+
+  .step__description {
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+    font-size: var(--font-size-sm);
+    line-height: 1.65;
+  }
+
+  @media (min-width: 768px) {
+    .steps {
+      flex-direction: row;
+      max-width: none;
+      gap: var(--space-lg);
+    }
+
+    .step {
+      flex: 1;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .step__header {
+      flex-direction: row;
+    }
+
+    .step__number {
+      width: 56px;
+      height: 56px;
+      font-size: var(--font-size-xl);
+    }
+
+    .step__line {
+      width: auto;
+      height: 2px;
+      flex: 1;
+      min-height: auto;
+      margin: 0 var(--space-sm);
+      align-self: center;
+    }
+
+    .step__content {
+      padding-bottom: 0;
+      padding-top: var(--space-md);
+    }
+
+    .step__description {
+      font-size: var(--font-size-base);
+    }
+  }
+</style>

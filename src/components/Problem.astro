@@ -1,0 +1,123 @@
+---
+// Problem section - Why choosing heating is difficult today
+// With supporting image of homeowner reviewing documents
+---
+
+<section class="section section--white" id="problem">
+  <div class="container">
+    <div class="problem__layout">
+      <div class="problem__content">
+        <h2 class="problem__title">Dlaczego wybór ogrzewania jest dziś tak trudny?</h2>
+        
+        <div class="problem__list">
+          <article class="problem__item">
+            <h3>Sprzeczne opinie instalatorów</h3>
+            <p>
+              Jeden poleca pompę ciepła, drugi twierdzi że się nie opłaca. 
+              Trzeci mówi o gazie, czwarty o pelecie. Każdy ma „najlepsze" rozwiązanie 
+              — które akurat instaluje i sprzedaje.
+            </p>
+          </article>
+
+          <article class="problem__item">
+            <h3>Niepewność kosztów energii</h3>
+            <p>
+              Ceny prądu, gazu i paliw zmieniają się co roku. Prognozy są niepewne. 
+              To co dziś wydaje się opłacalne, za 5 lat może wyglądać zupełnie inaczej 
+              — ale decyzję trzeba podjąć teraz.
+            </p>
+          </article>
+
+          <article class="problem__item">
+            <h3>Pompa ciepła nie wszędzie się sprawdzi</h3>
+            <p>
+              Wbrew reklamom, pompa ciepła to nie uniwersalne rozwiązanie. 
+              W starszym domu z grzejnikami, bez odpowiedniej izolacji, 
+              może działać nieefektywnie.
+            </p>
+          </article>
+
+          <article class="problem__item">
+            <h3>Konsekwencje na lata</h3>
+            <p>
+              Wymiana źródła ciepła to inwestycja na 15–25 lat. 
+              Błędna decyzja oznacza nie tylko utratę pieniędzy, 
+              ale też lata dyskomfortu.
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <div class="problem__image">
+        <div class="img-wrapper">
+          <img 
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" 
+            alt="Osoba analizująca dokumenty finansowe"
+            loading="lazy"
+            width="800"
+            height="600"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem__layout {
+    display: grid;
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+
+  .problem__title {
+    margin-bottom: var(--space-xl);
+  }
+
+  .problem__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .problem__item {
+    padding-left: var(--space-md);
+    border-left: 2px solid var(--color-mid-grey);
+  }
+
+  .problem__item h3 {
+    color: var(--color-dark-grey);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
+  .problem__item p {
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+    font-size: var(--font-size-sm);
+    line-height: 1.65;
+  }
+
+  .problem__image {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .problem__image {
+      display: block;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .problem__layout {
+      grid-template-columns: 1fr 0.85fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+
+    .problem__item p {
+      font-size: var(--font-size-base);
+    }
+  }
+</style>

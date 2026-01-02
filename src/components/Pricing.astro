@@ -1,0 +1,195 @@
+---
+// Pricing section
+---
+
+<section class="section section--white" id="cennik">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Cennik</h2>
+      <p class="section-subtitle">
+        Płacisz za wiedzę i czas, nie za prowizję od sprzedaży urządzeń.
+      </p>
+    </div>
+    
+    <div class="pricing__grid">
+      <article class="pricing__card">
+        <div class="pricing__header">
+          <h3 class="pricing__title">Analiza standardowa</h3>
+          <p class="pricing__price">
+            <span class="pricing__amount">1 200</span>
+            <span class="pricing__currency">zł</span>
+          </p>
+          <p class="pricing__from">od</p>
+        </div>
+        <p class="pricing__description">
+          Dom jednorodzinny do 200 m², jedno źródło ciepła, 
+          standardowy układ instalacji.
+        </p>
+        <ul class="pricing__features">
+          <li>Obliczenia strat ciepła</li>
+          <li>2–3 warianty systemu</li>
+          <li>Porównanie kosztów</li>
+          <li>Rekomendacja</li>
+          <li>Konsultacja po analizie</li>
+        </ul>
+        <p class="pricing__time">Do 14 dni roboczych</p>
+      </article>
+
+      <article class="pricing__card pricing__card--featured">
+        <div class="pricing__header">
+          <h3 class="pricing__title">Analiza rozszerzona</h3>
+          <p class="pricing__price">
+            <span class="pricing__amount">1 800</span>
+            <span class="pricing__currency">zł</span>
+          </p>
+          <p class="pricing__from">od</p>
+        </div>
+        <p class="pricing__description">
+          Większe budynki, złożone instalacje, analiza fotowoltaiki 
+          i magazynu energii.
+        </p>
+        <ul class="pricing__features">
+          <li>Wszystko z analizy standardowej</li>
+          <li>Analiza PV i magazynu energii</li>
+          <li>Budynki powyżej 200 m²</li>
+          <li>Złożone układy (np. strefy)</li>
+          <li>Dodatkowe warianty</li>
+        </ul>
+        <p class="pricing__time">Do 21 dni roboczych</p>
+      </article>
+    </div>
+
+    <div class="pricing__notes">
+      <p>
+        Dokładna wycena po zapoznaniu się z zakresem. 
+        Płatność po akceptacji wyceny, przed rozpoczęciem pracy.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing__grid {
+    display: grid;
+    gap: var(--space-lg);
+    max-width: 800px;
+    margin: 0 auto var(--space-xl);
+  }
+
+  .pricing__card {
+    padding: var(--space-xl);
+    background-color: var(--color-light-grey);
+    border-radius: var(--radius-lg);
+    border: 1px solid transparent;
+    transition: box-shadow var(--transition-base);
+  }
+
+  .pricing__card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .pricing__card--featured {
+    background-color: var(--color-white);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
+  }
+
+  .pricing__card--featured:hover {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .pricing__header {
+    text-align: center;
+    padding-bottom: var(--space-md);
+    margin-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-mid-grey);
+    position: relative;
+  }
+
+  .pricing__title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-sm);
+  }
+
+  .pricing__price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 0;
+  }
+
+  .pricing__amount {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    color: var(--color-dark-grey);
+    line-height: 1;
+  }
+
+  .pricing__currency {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .pricing__from {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
+  .pricing__description {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-md);
+    text-align: center;
+  }
+
+  .pricing__features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-lg);
+  }
+
+  .pricing__features li {
+    position: relative;
+    padding-left: var(--space-lg);
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+  }
+
+  .pricing__features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .pricing__time {
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    margin: 0;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-mid-grey);
+  }
+
+  .pricing__notes {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .pricing__notes p {
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
+  }
+
+  @media (min-width: 768px) {
+    .pricing__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

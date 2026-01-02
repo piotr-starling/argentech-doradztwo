@@ -1,0 +1,142 @@
+---
+// WhatYouGet section - Deliverables list
+---
+
+<section class="section section--white" id="co-otrzymasz">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Co otrzymujesz?</h2>
+      <p class="section-subtitle">
+        Wynikiem analizy jest szczegółowy raport — konkretne liczby i rekomendacje, 
+        które pozwolą podjąć świadomą decyzję.
+      </p>
+    </div>
+    
+    <div class="deliverables__grid">
+      <div class="deliverables__item">
+        <div class="deliverables__number">01</div>
+        <h3>Obliczenia strat ciepła</h3>
+        <p>Zgodnie z normą PN-EN 12831, dla rzeczywistych parametrów budynku.</p>
+      </div>
+      
+      <div class="deliverables__item">
+        <div class="deliverables__number">02</div>
+        <h3>2–3 warianty systemu</h3>
+        <p>Realistyczne opcje dopasowane do budynku i Twoich potrzeb.</p>
+      </div>
+      
+      <div class="deliverables__item">
+        <div class="deliverables__number">03</div>
+        <h3>Porównanie kosztów</h3>
+        <p>Zestawienie inwestycji początkowej i rocznych kosztów eksploatacji.</p>
+      </div>
+      
+      <div class="deliverables__item">
+        <div class="deliverables__number">04</div>
+        <h3>Analiza PV i magazynu</h3>
+        <p>Ocena wpływu fotowoltaiki na opłacalność pompy ciepła.</p>
+      </div>
+      
+      <div class="deliverables__item">
+        <div class="deliverables__number">05</div>
+        <h3>Tabele porównawcze</h3>
+        <p>Przejrzyste zestawienia ułatwiające porównanie opcji.</p>
+      </div>
+      
+      <div class="deliverables__item">
+        <div class="deliverables__number">06</div>
+        <h3>Jasna rekomendacja</h3>
+        <p>Wskazanie optymalnego rozwiązania wraz z uzasadnieniem.</p>
+      </div>
+      
+      <div class="deliverables__item deliverables__item--highlight">
+        <div class="deliverables__number">+</div>
+        <h3>Konsultacja po analizie</h3>
+        <p>Rozmowa telefoniczna lub video — omówienie wyników i odpowiedzi na pytania.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .deliverables__grid {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .deliverables__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background-color: var(--color-light-grey);
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast);
+  }
+
+  .deliverables__item:hover {
+    background-color: var(--color-lighter-grey);
+  }
+
+  .deliverables__item--highlight {
+    background-color: var(--color-accent-light);
+    border: 1px solid rgba(74, 124, 89, 0.15);
+  }
+
+  .deliverables__item--highlight:hover {
+    background-color: var(--color-accent-light);
+  }
+
+  .deliverables__number {
+    flex-shrink: 0;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-accent);
+    opacity: 0.7;
+    min-width: 24px;
+    padding-top: 2px;
+  }
+
+  .deliverables__item h3 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .deliverables__item p {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 768px) {
+    .deliverables__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+    }
+
+    .deliverables__item--highlight {
+      grid-column: span 2;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--space-lg);
+    }
+
+    .deliverables__item--highlight .deliverables__number {
+      font-size: var(--font-size-lg);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .deliverables__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .deliverables__item--highlight {
+      grid-column: span 3;
+    }
+  }
+</style>

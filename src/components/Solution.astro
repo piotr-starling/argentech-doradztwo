@@ -1,0 +1,130 @@
+---
+// Solution section - Argentech's approach
+// With image of engineer at desk with technical drawings
+---
+
+<section class="section section--grey" id="rozwiazanie">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Niezależna analiza zamiast domysłów</h2>
+      <p class="section-subtitle">
+        Argentech to niezależne doradztwo techniczne. Nie sprzedajemy urządzeń, 
+        nie wykonujemy instalacji — dlatego możemy doradzić obiektywnie.
+      </p>
+    </div>
+    
+    <div class="solution__layout">
+      <div class="solution__image">
+        <div class="img-wrapper">
+          <img 
+            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" 
+            alt="Inżynier przy biurku analizujący dokumentację techniczną"
+            loading="lazy"
+            width="800"
+            height="600"
+          />
+        </div>
+      </div>
+
+      <div class="solution__content">
+        <div class="solution__points">
+          <div class="solution__point">
+            <h3>Obliczenia zamiast opinii</h3>
+            <p>
+              Każda analiza opiera się na konkretnych danych: powierzchnia, izolacja, 
+              stolarka, lokalne warunki klimatyczne. Obliczamy straty ciepła zgodnie 
+              z normami — nie zgadujemy.
+            </p>
+          </div>
+
+          <div class="solution__point">
+            <h3>Porównanie wariantów</h3>
+            <p>
+              Zestawiamy 2–3 realistyczne rozwiązania: koszty inwestycji, roczne koszty 
+              eksploatacji, prognozy na 10–15 lat. Widzisz pełny obraz, nie tylko cenę 
+              kotła czy pompy.
+            </p>
+          </div>
+
+          <div class="solution__point">
+            <h3>Bez powiązań z producentami</h3>
+            <p>
+              Nie mamy umów z producentami urządzeń ani z firmami instalatorskimi. 
+              Rekomendacja wynika z analizy techniczno-ekonomicznej, nie z prowizji.
+            </p>
+          </div>
+
+          <div class="solution__point">
+            <h3>Twój budynek, Twoje dane</h3>
+            <p>
+              Analiza jest przygotowywana dla konkretnego budynku, z uwzględnieniem 
+              jego parametrów i Twoich preferencji. To nie szablon — to indywidualne 
+              opracowanie.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .solution__layout {
+    display: grid;
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+
+  .solution__image {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .solution__points {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .solution__point {
+    padding: var(--space-md);
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .solution__point h3 {
+    color: var(--color-dark-grey);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
+  .solution__point p {
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+    font-size: var(--font-size-sm);
+    line-height: 1.65;
+  }
+
+  @media (min-width: 768px) {
+    .solution__points {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 900px) {
+    .solution__layout {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+
+    .solution__image {
+      max-width: none;
+    }
+
+    .solution__point p {
+      font-size: var(--font-size-base);
+    }
+  }
+</style>
