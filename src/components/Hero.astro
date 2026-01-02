@@ -1,9 +1,10 @@
 ---
 // Hero section - Full-width with image background and dark overlay
 // Image: Polish-style single-family house, daylight, realistic
+import heroImage from '../assets/modern-luxury-house-and-garden-2025-01-08-14-29-29-utc.jpg';
 ---
 
-<section class="hero" id="hero">
+<section class="hero" id="hero" style={`background-image: url(${heroImage.src})`}>
   <div class="hero__overlay"></div>
   <div class="hero__content">
     <p class="hero__eyebrow">Argentech • Doradztwo techniczne</p>
@@ -31,11 +32,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* Polish-style single-family house - Unsplash */
-    background-image: url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-position: center;
-    background-color: #2a3a2d;
+    background-color: #3a3a3a;
   }
 
   .hero__overlay {
