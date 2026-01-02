@@ -14,7 +14,7 @@ import heroImage from '../assets/modern-luxury-house-and-garden-2025-01-08-14-29
       a&nbsp;nie na ofertach producentów i&nbsp;instalatorów.
     </p>
     <div class="hero__cta">
-      <a href="#kontakt" class="btn btn--primary btn--large">Zamów analizę</a>
+      <a href="#kontakt" class="hero__btn">Zamów analizę</a>
       <p class="hero__microcopy">Niezależna analiza • bez sprzedaży i montażu</p>
     </div>
   </div>
@@ -34,7 +34,7 @@ import heroImage from '../assets/modern-luxury-house-and-garden-2025-01-08-14-29
     justify-content: center;
     background-size: cover;
     background-position: center;
-    background-color: #3a3a3a;
+    background-color: #1a1d21;
   }
 
   .hero__overlay {
@@ -42,9 +42,9 @@ import heroImage from '../assets/modern-luxury-house-and-garden-2025-01-08-14-29
     inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(20, 25, 22, 0.55) 0%,
-      rgba(20, 25, 22, 0.65) 50%,
-      rgba(20, 25, 22, 0.75) 100%
+      rgba(26, 29, 33, 0.5) 0%,
+      rgba(26, 29, 33, 0.6) 50%,
+      rgba(26, 29, 33, 0.7) 100%
     );
   }
 
@@ -89,6 +89,38 @@ import heroImage from '../assets/modern-luxury-house-and-garden-2025-01-08-14-29
     flex-direction: column;
     align-items: center;
     gap: var(--space-sm);
+  }
+
+  .hero__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md) var(--space-xl);
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    background-color: var(--color-white);
+    color: var(--color-dark-grey);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .hero__btn:hover {
+    background-color: #f5f5f5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .hero__btn:active {
+    transform: translateY(0);
+  }
+
+  .hero__btn:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 3px;
   }
 
   .hero__microcopy {
