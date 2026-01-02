@@ -1,0 +1,984 @@
+---
+// CTA Modal - 2-step form wizard for lead capture
+---
+
+<div 
+  id="cta-modal" 
+  class="modal" 
+  role="dialog" 
+  aria-modal="true" 
+  aria-labelledby="modal-title"
+  aria-hidden="true"
+>
+  <div class="modal__backdrop" data-modal-close></div>
+  <div class="modal__container">
+    <button class="modal__close" data-modal-close aria-label="Zamknij formularz">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <!-- Form Content -->
+    <div class="modal__content" id="modal-form-content">
+      <div class="modal__header">
+        <h2 id="modal-title" class="modal__title">Zamów niezależną analizę</h2>
+        <p class="modal__subtitle">Wypełnij formularz, a skontaktujemy się w ciągu 24–48h.</p>
+        <div class="modal__steps">
+          <span class="modal__step modal__step--active" data-step-indicator="1">1</span>
+          <span class="modal__step-line"></span>
+          <span class="modal__step" data-step-indicator="2">2</span>
+        </div>
+      </div>
+
+      <form id="cta-form" class="form" novalidate>
+        <!-- Honeypot -->
+        <input type="text" name="website" class="form__honeypot" tabindex="-1" autocomplete="off" />
+
+        <!-- Step 1: Required -->
+        <div class="form__step" data-step="1">
+          <div class="form__group">
+            <label class="form__label">Typ budynku <span class="form__required">*</span></label>
+            <div class="form__radio-group">
+              <label class="form__radio">
+                <input type="radio" name="buildingType" value="nowy" required />
+                <span class="form__radio-label">Nowy</span>
+              </label>
+              <label class="form__radio">
+                <input type="radio" name="buildingType" value="istniejący" required />
+                <span class="form__radio-label">Istniejący</span>
+              </label>
+            </div>
+            <span class="form__error" data-error="buildingType"></span>
+          </div>
+
+          <div class="form__group">
+            <label class="form__label" for="area">Powierzchnia (m²) <span class="form__required">*</span></label>
+            <input 
+              type="number" 
+              id="area" 
+              name="area" 
+              class="form__input" 
+              min="20" 
+              max="2000" 
+              required 
+              placeholder="np. 150"
+            />
+            <span class="form__error" data-error="area"></span>
+          </div>
+
+          <div class="form__group">
+            <label class="form__label" for="location">Województwo <span class="form__required">*</span></label>
+            <select id="location" name="location" class="form__select" required>
+              <option value="">Wybierz województwo</option>
+              <option value="dolnośląskie">Dolnośląskie</option>
+              <option value="kujawsko-pomorskie">Kujawsko-pomorskie</option>
+              <option value="lubelskie">Lubelskie</option>
+              <option value="lubuskie">Lubuskie</option>
+              <option value="łódzkie">Łódzkie</option>
+              <option value="małopolskie">Małopolskie</option>
+              <option value="mazowieckie">Mazowieckie</option>
+              <option value="opolskie">Opolskie</option>
+              <option value="podkarpackie">Podkarpackie</option>
+              <option value="podlaskie">Podlaskie</option>
+              <option value="pomorskie">Pomorskie</option>
+              <option value="śląskie">Śląskie</option>
+              <option value="świętokrzyskie">Świętokrzyskie</option>
+              <option value="warmińsko-mazurskie">Warmińsko-mazurskie</option>
+              <option value="wielkopolskie">Wielkopolskie</option>
+              <option value="zachodniopomorskie">Zachodniopomorskie</option>
+            </select>
+            <span class="form__error" data-error="location"></span>
+          </div>
+
+          <div class="form__group">
+            <label class="form__label" for="email">Email <span class="form__required">*</span></label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form__input" 
+              required 
+              placeholder="twoj@email.pl"
+            />
+            <span class="form__error" data-error="email"></span>
+          </div>
+
+          <div class="form__group">
+            <label class="form__label" for="phone">Telefon <span class="form__required">*</span></label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              class="form__input" 
+              required 
+              placeholder="np. 600 123 456"
+            />
+            <span class="form__error" data-error="phone"></span>
+          </div>
+        </div>
+
+        <!-- Step 2: Optional -->
+        <div class="form__step" data-step="2" hidden>
+          <p class="form__step-intro">Poniższe informacje są opcjonalne, ale pomogą lepiej przygotować analizę.</p>
+
+          <div class="form__group">
+            <label class="form__label" for="currentHeating">Aktualne źródło ciepła</label>
+            <select id="currentHeating" name="currentHeating" class="form__select">
+              <option value="">Wybierz (opcjonalnie)</option>
+              <option value="gaz">Gaz</option>
+              <option value="pellet">Pellet / biomasa</option>
+              <option value="pompa ciepła">Pompa ciepła</option>
+              <option value="węgiel">Węgiel</option>
+              <option value="olej">Olej opałowy</option>
+              <option value="elektryczne">Ogrzewanie elektryczne</option>
+              <option value="inne">Inne</option>
+              <option value="brak">Brak (nowy budynek)</option>
+            </select>
+          </div>
+
+          <div class="form__group">
+            <label class="form__label" for="installation">Instalacja grzewcza</label>
+            <select id="installation" name="installation" class="form__select">
+              <option value="">Wybierz (opcjonalnie)</option>
+              <option value="grzejniki">Grzejniki</option>
+              <option value="podłogówka">Ogrzewanie podłogowe</option>
+              <option value="mieszana">Mieszana (grzejniki + podłogówka)</option>
+              <option value="brak">Brak / planowana</option>
+            </select>
+          </div>
+
+          <div class="form__group">
+            <label class="form__label">Fotowoltaika</label>
+            <div class="form__radio-group">
+              <label class="form__radio">
+                <input type="radio" name="hasPV" value="tak" />
+                <span class="form__radio-label">Tak</span>
+              </label>
+              <label class="form__radio">
+                <input type="radio" name="hasPV" value="nie" />
+                <span class="form__radio-label">Nie</span>
+              </label>
+              <label class="form__radio">
+                <input type="radio" name="hasPV" value="planowana" />
+                <span class="form__radio-label">Planowana</span>
+              </label>
+            </div>
+            <div class="form__conditional" id="pv-power-group" hidden>
+              <label class="form__label form__label--small" for="pvPower">Moc instalacji (kWp)</label>
+              <input type="number" id="pvPower" name="pvPower" class="form__input form__input--small" min="1" max="100" step="0.1" placeholder="np. 10" />
+            </div>
+          </div>
+
+          <div class="form__group">
+            <label class="form__label">Magazyn energii</label>
+            <div class="form__radio-group">
+              <label class="form__radio">
+                <input type="radio" name="hasStorage" value="tak" />
+                <span class="form__radio-label">Tak</span>
+              </label>
+              <label class="form__radio">
+                <input type="radio" name="hasStorage" value="nie" />
+                <span class="form__radio-label">Nie</span>
+              </label>
+              <label class="form__radio">
+                <input type="radio" name="hasStorage" value="planowany" />
+                <span class="form__radio-label">Planowany</span>
+              </label>
+            </div>
+            <div class="form__conditional" id="storage-capacity-group" hidden>
+              <label class="form__label form__label--small" for="storageCapacity">Pojemność (kWh)</label>
+              <input type="number" id="storageCapacity" name="storageCapacity" class="form__input form__input--small" min="1" max="200" step="0.1" placeholder="np. 10" />
+            </div>
+          </div>
+
+          <div class="form__group">
+            <label class="form__label" for="notes">Dodatkowe informacje</label>
+            <textarea 
+              id="notes" 
+              name="notes" 
+              class="form__textarea" 
+              rows="3" 
+              placeholder="Np. specyfika budynku, pytania, preferencje..."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form__actions">
+          <button type="button" class="form__btn form__btn--secondary" id="btn-back" hidden>
+            Wstecz
+          </button>
+          <button type="button" class="form__btn form__btn--primary" id="btn-next">
+            Dalej
+          </button>
+          <button type="submit" class="form__btn form__btn--primary" id="btn-submit" hidden>
+            <span class="form__btn-text">Wyślij</span>
+            <span class="form__btn-loading" hidden>
+              <svg class="form__spinner" viewBox="0 0 24 24" width="20" height="20">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4 31.4" />
+              </svg>
+              Wysyłanie...
+            </span>
+          </button>
+        </div>
+
+        <!-- Form Error -->
+        <div class="form__global-error" id="form-global-error" hidden></div>
+      </form>
+    </div>
+
+    <!-- Thank You State -->
+    <div class="modal__content modal__success" id="modal-success" hidden>
+      <div class="success__icon">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2"/>
+          <path d="M20 32l8 8 16-16" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 class="success__title">Dziękujemy za zgłoszenie!</h2>
+      <p class="success__text">
+        Otrzymaliśmy Twoje dane. Skontaktujemy się w ciągu 24–48 godzin, 
+        aby omówić szczegóły i przygotować wycenę analizy.
+      </p>
+      <button type="button" class="form__btn form__btn--primary" data-modal-close>
+        Zamknij
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // Modal Controller - runs after DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    // DOM Elements
+    const modal = document.getElementById('cta-modal');
+    const form = document.getElementById('cta-form');
+    const formContent = document.getElementById('modal-form-content');
+    const successContent = document.getElementById('modal-success');
+    const globalError = document.getElementById('form-global-error');
+    
+    const step1 = document.querySelector('[data-step="1"]');
+    const step2 = document.querySelector('[data-step="2"]');
+    const stepIndicator1 = document.querySelector('[data-step-indicator="1"]');
+    const stepIndicator2 = document.querySelector('[data-step-indicator="2"]');
+    
+    const btnNext = document.getElementById('btn-next');
+    const btnBack = document.getElementById('btn-back');
+    const btnSubmit = document.getElementById('btn-submit');
+    
+    const pvPowerGroup = document.getElementById('pv-power-group');
+    const storageCapacityGroup = document.getElementById('storage-capacity-group');
+    
+    let currentStep = 1;
+    let openerElement = null;
+    let focusableElements = [];
+    let firstFocusable = null;
+    let lastFocusable = null;
+
+    // Validation messages in Polish
+    const errorMessages = {
+      buildingType: 'Wybierz typ budynku',
+      area: 'Podaj powierzchnię (20–2000 m²)',
+      location: 'Wybierz województwo',
+      email: 'Podaj poprawny adres email',
+      phone: 'Podaj numer telefonu (min. 9 cyfr)',
+    };
+
+    // Open modal
+    function openModal(opener) {
+      openerElement = opener || null;
+      if (modal) {
+        modal.setAttribute('aria-hidden', 'false');
+        modal.classList.add('modal--open');
+      }
+      document.body.style.overflow = 'hidden';
+      
+      updateFocusableElements();
+      if (firstFocusable) firstFocusable.focus();
+      
+      document.addEventListener('keydown', handleKeyDown);
+    }
+
+    // Close modal
+    function closeModal() {
+      if (modal) {
+        modal.setAttribute('aria-hidden', 'true');
+        modal.classList.remove('modal--open');
+      }
+      document.body.style.overflow = '';
+      
+      document.removeEventListener('keydown', handleKeyDown);
+      
+      // Reset form after animation
+      setTimeout(function() {
+        resetForm();
+      }, 300);
+      
+      // Return focus to opener
+      if (openerElement) openerElement.focus();
+    }
+
+    // Reset form state
+    function resetForm() {
+      if (form) form.reset();
+      currentStep = 1;
+      updateStepVisibility();
+      if (formContent) formContent.removeAttribute('hidden');
+      if (successContent) successContent.setAttribute('hidden', '');
+      if (globalError) globalError.setAttribute('hidden', '');
+      clearAllErrors();
+      if (pvPowerGroup) pvPowerGroup.setAttribute('hidden', '');
+      if (storageCapacityGroup) storageCapacityGroup.setAttribute('hidden', '');
+    }
+
+    // Update step visibility
+    function updateStepVisibility() {
+      if (currentStep === 1) {
+        if (step1) step1.removeAttribute('hidden');
+        if (step2) step2.setAttribute('hidden', '');
+        if (btnBack) btnBack.setAttribute('hidden', '');
+        if (btnNext) btnNext.removeAttribute('hidden');
+        if (btnSubmit) btnSubmit.setAttribute('hidden', '');
+        if (stepIndicator1) {
+          stepIndicator1.classList.add('modal__step--active');
+          stepIndicator1.classList.remove('modal__step--completed');
+        }
+        if (stepIndicator2) stepIndicator2.classList.remove('modal__step--active');
+      } else {
+        if (step1) step1.setAttribute('hidden', '');
+        if (step2) step2.removeAttribute('hidden');
+        if (btnBack) btnBack.removeAttribute('hidden');
+        if (btnNext) btnNext.setAttribute('hidden', '');
+        if (btnSubmit) btnSubmit.removeAttribute('hidden');
+        if (stepIndicator1) {
+          stepIndicator1.classList.remove('modal__step--active');
+          stepIndicator1.classList.add('modal__step--completed');
+        }
+        if (stepIndicator2) stepIndicator2.classList.add('modal__step--active');
+      }
+      updateFocusableElements();
+    }
+
+    // Update focusable elements for trap
+    function updateFocusableElements() {
+      const container = modal ? modal.querySelector('.modal__container') : null;
+      if (!container) return;
+      
+      const allFocusable = container.querySelectorAll(
+        'button:not([hidden]):not([disabled]), input:not([hidden]):not([tabindex="-1"]), select:not([hidden]), textarea:not([hidden]), [tabindex]:not([tabindex="-1"]):not([hidden])'
+      );
+      
+      focusableElements = Array.from(allFocusable).filter(function(el) {
+        const step = el.closest('[data-step]');
+        if (!step) return true;
+        return !step.hasAttribute('hidden');
+      });
+      
+      firstFocusable = focusableElements[0] || null;
+      lastFocusable = focusableElements[focusableElements.length - 1] || null;
+    }
+
+    // Handle keyboard
+    function handleKeyDown(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+        return;
+      }
+      
+      if (e.key === 'Tab') {
+        if (focusableElements.length === 0) return;
+        
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusable) {
+            e.preventDefault();
+            if (lastFocusable) lastFocusable.focus();
+          }
+        } else {
+          if (document.activeElement === lastFocusable) {
+            e.preventDefault();
+            if (firstFocusable) firstFocusable.focus();
+          }
+        }
+      }
+    }
+
+    // Validate field
+    function validateField(name) {
+      if (!form) return true;
+      const field = form.elements.namedItem(name);
+      let isValid = true;
+      let value = '';
+      
+      if (field && field.length !== undefined && field.value !== undefined) {
+        // RadioNodeList
+        value = field.value;
+        isValid = value !== '';
+      } else if (field && (field.tagName === 'INPUT' || field.tagName === 'SELECT')) {
+        value = field.value.trim();
+        
+        if (name === 'email') {
+          isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        } else if (name === 'phone') {
+          const digits = value.replace(/\D/g, '');
+          isValid = digits.length >= 9;
+        } else if (name === 'area') {
+          const num = parseFloat(value);
+          isValid = !isNaN(num) && num >= 20 && num <= 2000;
+        } else {
+          isValid = value !== '';
+        }
+      }
+      
+      const errorEl = document.querySelector('[data-error="' + name + '"]');
+      if (!isValid && errorEl) {
+        errorEl.textContent = errorMessages[name] || 'To pole jest wymagane';
+        errorEl.classList.add('form__error--visible');
+      } else if (errorEl) {
+        errorEl.textContent = '';
+        errorEl.classList.remove('form__error--visible');
+      }
+      
+      return isValid;
+    }
+
+    // Validate step 1
+    function validateStep1() {
+      const fields = ['buildingType', 'area', 'location', 'email', 'phone'];
+      let allValid = true;
+      
+      for (let i = 0; i < fields.length; i++) {
+        if (!validateField(fields[i])) {
+          allValid = false;
+        }
+      }
+      
+      return allValid;
+    }
+
+    // Clear all errors
+    function clearAllErrors() {
+      document.querySelectorAll('.form__error').forEach(function(el) {
+        el.textContent = '';
+        el.classList.remove('form__error--visible');
+      });
+    }
+
+    // Get form data
+    function getFormData() {
+      const formData = new FormData(form);
+      const data = {};
+      
+      formData.forEach(function(value, key) {
+        if (key !== 'website') { // Exclude honeypot
+          data[key] = value.toString();
+        }
+      });
+      
+      return data;
+    }
+
+    // Submit form
+    async function submitForm() {
+      const btnText = btnSubmit ? btnSubmit.querySelector('.form__btn-text') : null;
+      const btnLoading = btnSubmit ? btnSubmit.querySelector('.form__btn-loading') : null;
+      
+      // Check honeypot
+      const honeypot = form ? form.querySelector('[name="website"]') : null;
+      if (honeypot && honeypot.value) {
+        // Bot detected, fake success
+        showSuccess();
+        return;
+      }
+      
+      // Show loading
+      if (btnSubmit) btnSubmit.setAttribute('disabled', '');
+      if (btnText) btnText.setAttribute('hidden', '');
+      if (btnLoading) btnLoading.removeAttribute('hidden');
+      if (globalError) globalError.setAttribute('hidden', '');
+      
+      try {
+        const response = await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(getFormData()),
+        });
+        
+        const result = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(result.error || 'Wystąpił błąd podczas wysyłania');
+        }
+        
+        showSuccess();
+      } catch (error) {
+        const message = error instanceof Error ? error.message : 'Wystąpił nieoczekiwany błąd';
+        if (globalError) {
+          globalError.textContent = message;
+          globalError.removeAttribute('hidden');
+        }
+      } finally {
+        if (btnSubmit) btnSubmit.removeAttribute('disabled');
+        if (btnText) btnText.removeAttribute('hidden');
+        if (btnLoading) btnLoading.setAttribute('hidden', '');
+      }
+    }
+
+    // Show success state
+    function showSuccess() {
+      if (formContent) formContent.setAttribute('hidden', '');
+      if (successContent) successContent.removeAttribute('hidden');
+      updateFocusableElements();
+      if (firstFocusable) firstFocusable.focus();
+    }
+
+    // Event: Open modal buttons
+    document.querySelectorAll('[data-open-cta-modal]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        openModal(btn);
+      });
+    });
+
+    // Event: Close modal
+    document.querySelectorAll('[data-modal-close]').forEach(function(el) {
+      el.addEventListener('click', closeModal);
+    });
+
+    // Event: Next step
+    if (btnNext) {
+      btnNext.addEventListener('click', function() {
+        if (validateStep1()) {
+          currentStep = 2;
+          updateStepVisibility();
+        }
+      });
+    }
+
+    // Event: Back step
+    if (btnBack) {
+      btnBack.addEventListener('click', function() {
+        currentStep = 1;
+        updateStepVisibility();
+      });
+    }
+
+    // Event: Submit
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitForm();
+      });
+    }
+
+    // Event: PV conditional
+    document.querySelectorAll('[name="hasPV"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        if (radio.value === 'tak' || radio.value === 'planowana') {
+          if (pvPowerGroup) pvPowerGroup.removeAttribute('hidden');
+        } else {
+          if (pvPowerGroup) pvPowerGroup.setAttribute('hidden', '');
+        }
+        updateFocusableElements();
+      });
+    });
+
+    // Event: Storage conditional
+    document.querySelectorAll('[name="hasStorage"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        if (radio.value === 'tak' || radio.value === 'planowany') {
+          if (storageCapacityGroup) storageCapacityGroup.removeAttribute('hidden');
+        } else {
+          if (storageCapacityGroup) storageCapacityGroup.setAttribute('hidden', '');
+        }
+        updateFocusableElements();
+      });
+    });
+
+    // Event: Real-time validation on blur
+    ['buildingType', 'area', 'location', 'email', 'phone'].forEach(function(name) {
+      if (!form) return;
+      const field = form.elements.namedItem(name);
+      if (field && field.length !== undefined) {
+        // RadioNodeList
+        Array.from(field).forEach(function(radio) {
+          radio.addEventListener('change', function() { validateField(name); });
+        });
+      } else if (field) {
+        field.addEventListener('blur', function() { validateField(name); });
+      }
+    });
+
+    // Initialize visibility
+    updateStepVisibility();
+  });
+</script>
+
+<style>
+  /* Ensure hidden attribute works */
+  [hidden] {
+    display: none !important;
+  }
+
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+
+  .modal--open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(26, 29, 33, 0.7);
+    cursor: pointer;
+  }
+
+  .modal__container {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    max-height: calc(100vh - 2rem);
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    transition: transform 0.25s ease;
+  }
+
+  .modal--open .modal__container {
+    transform: translateY(0);
+  }
+
+  .modal__close {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+    z-index: 1;
+  }
+
+  .modal__close:hover {
+    background-color: var(--color-light-grey);
+    color: var(--color-dark-grey);
+  }
+
+  .modal__close:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .modal__content {
+    padding: var(--space-xl);
+  }
+
+  .modal__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .modal__title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-xs);
+  }
+
+  .modal__subtitle {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .modal__steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+  }
+
+  .modal__step {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    background-color: var(--color-light-grey);
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+  }
+
+  .modal__step--active {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .modal__step--completed {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    opacity: 0.6;
+  }
+
+  .modal__step-line {
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-mid-grey);
+  }
+
+  /* Form Styles */
+  .form__honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .form__step {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .form__step-intro {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xs);
+  }
+
+  .form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form__label {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-dark-grey);
+  }
+
+  .form__label--small {
+    font-size: var(--font-size-xs);
+  }
+
+  .form__required {
+    color: #c53030;
+  }
+
+  .form__input,
+  .form__select,
+  .form__textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-mid-grey);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .form__input:focus,
+  .form__select:focus,
+  .form__textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(36, 59, 83, 0.1);
+  }
+
+  .form__input--small {
+    max-width: 140px;
+  }
+
+  .form__textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .form__select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235c6370' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 36px;
+  }
+
+  .form__radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .form__radio {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .form__radio input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+  }
+
+  .form__radio-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+  }
+
+  .form__conditional {
+    margin-top: var(--space-xs);
+    padding-left: var(--space-md);
+  }
+
+  .form__error {
+    font-size: var(--font-size-xs);
+    color: #c53030;
+    min-height: 16px;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+  }
+
+  .form__error--visible {
+    opacity: 1;
+  }
+
+  .form__global-error {
+    padding: var(--space-sm);
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius-sm);
+    color: #b91c1c;
+    font-size: var(--font-size-sm);
+    text-align: center;
+    margin-top: var(--space-md);
+  }
+
+  .form__actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-mid-grey);
+  }
+
+  .form__btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px var(--space-md);
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .form__btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .form__btn--primary {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .form__btn--primary:hover:not(:disabled) {
+    background-color: var(--color-accent-hover);
+  }
+
+  .form__btn--secondary {
+    background-color: var(--color-light-grey);
+    color: var(--color-text);
+  }
+
+  .form__btn--secondary:hover:not(:disabled) {
+    background-color: var(--color-mid-grey);
+  }
+
+  .form__btn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .form__spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Success State */
+  .modal__success {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-xl);
+  }
+
+  .success__icon {
+    color: var(--color-accent);
+    margin-bottom: var(--space-md);
+  }
+
+  .success__title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .success__text {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .modal__content {
+      padding: var(--space-lg);
+    }
+
+    .modal__success {
+      padding: var(--space-xl) var(--space-lg);
+    }
+
+    .form__radio-group {
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+  }
+</style>
+
+
